@@ -34,14 +34,13 @@ class P1Generator(DataGenerator):
 	absolutive_encoded = self.A2I["None"] if len(absolutive)==0 else self.A2I[absolutive[0]]
 	dative_encoded = self.D2I["None"] if len(dative) == 0 else self.D2I[dative[0]]
 	sent = data_sample['orig_sentence'].split(" ")
-	prev = prev_data['orig_sentence'].split(" ")
-	next = next_data['orig_sentence'].split(" ")
+	#prev = prev_data['orig_sentence'].split(" ")
+	#next = next_data['orig_sentence'].split(" ")
 	verb = sent[verb_index]
 
 	sent_without_verb = sent[:verb_index]+["<verb>"]+sent[verb_index+1:]
 	sent_without_verb = ["<begin>"] + [w for w in sent_without_verb if w!=""] + ["<end>"]
 
-	#return sent_without_verb, (ergative, absolutive, dative)
 	return sent_without_verb, (ergative_encoded, absolutive_encoded, dative_encoded) 
 
 
