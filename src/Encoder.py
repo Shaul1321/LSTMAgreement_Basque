@@ -3,7 +3,7 @@ import utils
 
 EMBEDDING_SIZE = 75
 
-"""the files contains various encoders than can encode a string word to a real vector"""
+"""This file contains various encoders than can encode a string word to a real vector"""
 
 class EmbeddingEncoder(object):
 
