@@ -1,4 +1,4 @@
-# LSTMAgreement_Basque
+# Basque LSTM agreement prediction
 
 to run: python main.py
 
