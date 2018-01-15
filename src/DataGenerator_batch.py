@@ -2,7 +2,7 @@ import random
 
 """
 an abstract class for creating training example, based on the training corpus.
-derived class override create_example method according to the requierments. 
+derived class overrides create_example method according to the requierments. 
 """
 
 class DataGenerator(object):
@@ -44,26 +44,22 @@ class DataGenerator(object):
    """
 
    i = 0
+   batch_size = 32
 
    while True: 
       i+=1
       if i%3000 == 0: 
+	# remove shuffle if context is actually used (TODO: add division of the dataset into chunks, then shuffle these)
 	random.shuffle(self.train)
 	random.shuffle(self.test)
-	pass
-
-      batch_size = 32
+	
       batch = []
-
+      source = self.train if is_training else self.test
+	
       for k in range(batch_size):
-      	if is_training:
-      		i = random.choice(range(1, len(self.train)-1))
-		source = self.train
-      	else:
-		i = random.choice(range(1, len(self.test)-1))
-		source = self.test
+      	index = random.choice(range(1, len(source)-1))
 
-     	data, prev_data, next_data = source[i], source[i-1], source[i+1]
+     	data, prev_data, next_data = source[index], source[index-1], source[index+1]
 
      	x_encoded, y_encoded = self.create_example(data, prev_data, next_data)
 	batch.append((x_encoded, y_encoded, data))
