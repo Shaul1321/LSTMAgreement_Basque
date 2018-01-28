@@ -152,12 +152,6 @@ class RNN(object):
 
 		return (a_pred, e_pred, d_pred)
 
-	def encode(self, sentence):
-
-		"""encode the sentence words with the encoder"""
-
-		return [self.encoder.encode(w) for w in sentence]
-
         def train(self, epochs=30):
 
 	  n = self.generator.get_train_size()
