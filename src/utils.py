@@ -53,6 +53,7 @@ labels = ["orig_sentence", "output", "verb_output", "verb_index"]
 
 dative_count = 0
 
+# these words are associated with bot-generated sentences
 bad_words = ["familiak", "pertsonak", "pertsona", "inaktiboetatik", "inaktiboak", "erretiraturik", "etxetan", "etxebizitza","etxek", "udalerri", "metropolitanoan", "diagrama", "etxeak", "apartamentuak", "eskola", "kilometrotako", "kilometroko", "biztanleriak", "komertzialetatik", "publikoetatik","probintzian", "ospitale", "konderrian", "kokatua", "kilometro", "osasunekipamendu", "zentsuaren", "biztanle", "publikoak", "komertzioetatik", "administratiboki"]
 
 count = 0.
