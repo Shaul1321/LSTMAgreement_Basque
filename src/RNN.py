@@ -12,13 +12,13 @@ EMBEDDING_SIZE = 75
 
 
 ABSO = {"<NR_HK>": "absolutive pl3", "<NR_HU>": "absolutive sg3", "<NR_HI>": "absolutive ??",
-"<NR_GU>": "absolutive 1pl", "<NR_NI>":"absolutive 1sg", "<NR_ZU>": "absolutive 2sg", "<NR_ZK>": "absolutive 2pl", "None": "None"}
+"<NR_GU>": "absolutive 1pl", "<NR_NI>":"absolutive 1sg", "<NR_ZU>": "absolutive 2sg", "<NR_ZK>": "absolutive 2pl", "None": "absolutive None"}
 
 ERG = {"<NK_HU>": "ergative sg3", "<NK_HK>": "ergative pl3", "<NK_HI>": "ergative ??",
-"<NK_GU>": "ergative 1pl", "<NK_NI>": "ergative 1sg", "<NK_ZU>": "ergative 2sg", "<NK_ZK>": "ergative 2pl", "None": "None"}
+"<NK_GU>": "ergative 1pl", "<NK_NI>": "ergative 1sg", "<NK_ZU>": "ergative 2sg", "<NK_ZK>": "ergative 2pl", "None": "ergative None"}
 
 DAT = {"<NI_HU>": "dative sg3", "<NI_HK>": "dative pl3", "<NI_HI>": "dative ??",
-"<NI_GU>": "dative 1pl", "<NI_NI>": "dative 1sg", "<NI_ZU>": "dative 2sg", "<NI_ZK>": "dative 2pl", "None": "None"}
+"<NI_GU>": "dative 1pl", "<NI_NI>": "dative 1sg", "<NI_ZU>": "dative 2sg", "<NI_ZK>": "dative 2pl", "None": "dative None"}
 
 class RNN(object):
 
@@ -222,7 +222,7 @@ class RNN(object):
 
 		# check dev set accuracy
 
-		if i%(3500) == 0:
+		if i%(4000) == 0:
 			print "iteration {} / {}".format(iteration, n)
 			print "Calculating accuracy on dev set."
 			self.test()
@@ -254,7 +254,7 @@ class RNN(object):
 				print "{}/{}".format(iteration, n)
 				#print "predicted: {}, {}".format(ABSO[self.I2A[a_pred]], ERG[self.I2E[e_pred]])#, self.D2I[d_pred]
 				print "predicted: {}, {}, {}".format(ABSO[self.I2A[a_pred]], ERG[self.I2E[e_pred]], DAT[self.I2D[d_pred]])
-				print "true: {}, {}, {}".format(ABSO[self.I2A[a_true]], ERG[self.I2E[e_true]], DAT[self.I2D[d_true]])
+				print "gold: {}, {}, {}".format(ABSO[self.I2A[a_true]], ERG[self.I2E[e_true]], DAT[self.I2D[d_true]])
 				print "success:", a_true==a_pred and e_true==e_pred and d_true==d_pred
 
 				verb_index = sent.index("<verb>")
@@ -306,7 +306,7 @@ class RNN(object):
 
 			if iteration > n:
 
-	   			print "accuracy: e: {}; a: {}; d: {}; total: {}".format(good_a/(good_a+bad_a), good_e/(good_e+bad_e),good_d/(good_d+bad_d), (good_a+good_e+good_d)/(good_a+good_e+bad_a+bad_e+good_d+bad_d))
+	   			print "accuracy: a: {}; e: {}; d: {}".format(good_a/(good_a+bad_a), good_e/(good_e+bad_e),good_d/(good_d+bad_d),)
 				return
 
 	
