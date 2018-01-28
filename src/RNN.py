@@ -300,7 +300,7 @@ class RNN(object):
 
 			if iteration > n:
 
-	   			print "accuracy: a: {}; e: {}; d: {}".format(good_a/(good_a+bad_a), good_e/(good_e+bad_e),good_d/(good_d+bad_d),)
+	   			print "accuracy: a: {}; e: {}; d: {}".format(good_a/(good_a+bad_a), good_e/(good_e+bad_e), good_d/(good_d+bad_d))
 				return
 
 	
